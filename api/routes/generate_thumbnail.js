@@ -6,40 +6,20 @@ const checkToken = require("../middleware/ckeckToken");
 
 router.post("/", checkToken, (req, res, next) => {
 
-    const options = {
-        url: req.body.url,
-        dest: './images/original' 
-    };
+    Jimp.read(req.body.url, (err, lenna) => {
+        if (err){
+            res.status(err.status || 500);
+            res.json({
+                error:{
+                    message:err.message
+                }
+            });
+        }
 
-    download.image(options)
-    .then(({ filename, image }) => {
-            // open the downloaded file 
-        Jimp.read(filename, (err, lenna) => {
+        lenna.resize(50, 50) // resize
+        .write('./images/thumbs/img.jpg'); // save
 
-            if (err){
-                res.status(err.status || 500);
-                res.json({
-                    error:{
-                        message:err.message
-                    }
-                });
-            }
-
-            lenna.resize(50, 50) // resize
-            .quality(60) // set JPEG quality
-            .write('./images/thumbs/img.jpg'); // save
-            
-        });
-
-    })
-    .catch((err) => {
-        res.status(err.status || 500);
-        res.json({
-            error:{
-                message:err.message
-            }
-        });
-    })
+    });
 
 
 });
