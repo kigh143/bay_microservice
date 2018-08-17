@@ -7,4 +7,15 @@ router.get("/", (req, res, next) => {
     });  
 });
 
+router.post("/", (req, res, next) => {
+    const image = {
+        width:  req.body.width,
+        height: req.body.height
+    };
+    res.status(201).json({
+        message:"handling the generate thubnail of the image uploaded",
+        image:image
+    });  
+});
+
 module.exports = router;
