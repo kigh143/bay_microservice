@@ -1,5 +1,6 @@
 const  express = require("express");
 const router = express.Router();
+const checkToken = require("../middleware/ckeckToken");
 
 router.get("/", (req, res, next) => {
     res.status(200).json({
@@ -7,10 +8,9 @@ router.get("/", (req, res, next) => {
     });  
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", checkToken, (req, res, next) => {
     const image = {
-        width:  req.body.width,
-        height: req.body.height
+        imgUrl:  req.body.imgUrl,
     };
     res.status(201).json({
         message:"handling the generate thubnail of the image uploaded",
