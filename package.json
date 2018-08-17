@@ -20,7 +20,6 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "image-downloader": "^3.4.1",
     "jimp": "^0.3.5",
     "jsonpatch": "^3.0.1",
     "jsonwebtoken": "^8.3.0"
