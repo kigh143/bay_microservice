@@ -1,21 +1,47 @@
 const  express = require("express");
 const router = express.Router();
+const download = require('image-downloader');
+const Jimp = require('jimp');
 const checkToken = require("../middleware/ckeckToken");
 
-router.get("/", (req, res, next) => {
-    res.status(200).json({
-        message:"handling the generate thubnail of the image uploaded",
-    });  
-});
-
 router.post("/", checkToken, (req, res, next) => {
-    const image = {
-        imgUrl:  req.body.imgUrl,
+
+    const options = {
+        url: req.body.url,
+        dest: './images/original' 
     };
-    res.status(201).json({
-        message:"handling the generate thubnail of the image uploaded",
-        image:image
-    });  
+
+    download.image(options)
+    .then(({ filename, image }) => {
+            // open the downloaded file 
+        Jimp.read(filename, (err, lenna) => {
+
+            if (err){
+                res.status(err.status || 500);
+                res.json({
+                    error:{
+                        message:err.message
+                    }
+                });
+            }
+
+            lenna.resize(50, 50) // resize
+            .quality(60) // set JPEG quality
+            .write('./images/thumbs/img.jpg'); // save
+            
+        });
+
+    })
+    .catch((err) => {
+        res.status(err.status || 500);
+        res.json({
+            error:{
+                message:err.message
+            }
+        });
+    })
+
+
 });
 
 module.exports = router;
