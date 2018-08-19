@@ -8,20 +8,20 @@ A simple stateless microservice in Nodejs, with three major functionalities;
 
 ## Poject setup;
 
-Install all dependencies with “npm install”,
-Start the server with “npm start”,
-Run the test suite with “npm test”
+- Install all dependencies with “npm install”,
+- Start the server with “npm start”,
+- Run the test suite with “npm test”
 
 # Allowed HTTPs requests:
 
-POST : To create thumbnail and json patching.
-GET : To get the Authentication token.
+- POST : To create thumbnail and json patching.
+- GET : To get the Authentication token.
 
 # Description Of Usual Server Responses:
 
-200 OK - the request was successful (some API calls may return 201 instead).
-401 Unauthorized - authentication failed or user doesn't have permissions for requested operation.
-404 Not Found - resource was not found.
+- 200 OK - the request was successful (some API calls may return 201 instead).
+- 401 Unauthorized - authentication failed or user doesn't have permissions for requested operation.
+- 404 Not Found - resource was not found.
 
 # End-points
 
@@ -33,6 +33,8 @@ This is a get request the passes the username and password and on success it ret
 
 This is a post request for the image url : for a public image url.
 this requires the user to be authenticated with the jwt [ you can pass this as an Authorization header ].
+
+**Post body should be like this**
 
 ```javascript
     {
