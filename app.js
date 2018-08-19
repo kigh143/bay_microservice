@@ -21,7 +21,6 @@ app.use( (req, res, next)  => {
     next();
 });
 
-
 app.use("/login", loginRoutes);
 app.use("/generate_thumbnail", generateThumbnailRoutes);
 app.use("/patch_json", patchJsonRoutes);
