@@ -38,7 +38,7 @@ this requires the user to be authenticated with the jwt [ you can pass this as a
 
 ```javascript
     {
-        "url":"http://fecundlabs.com/wp-content/uploads/2018/05/icon.png"
+        "url":"http://xample.com/wp-content/uploads/2018/05/icon.png"
     }
 ```
 
