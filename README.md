@@ -34,7 +34,22 @@ This is a get request the passes the username and password and on success it ret
 This is a post request for the image url : for a public image url.
 this requires the user to be authenticated with the jwt [ you can pass this as an Authorization header ].
 
+```javascript
+    {
+        "url":"http://fecundlabs.com/wp-content/uploads/2018/05/icon.png"
+    }
+```
+
 ##### /patch_json (Protected Endpoints)
 
 This is a post request.
 Applies Json Patch Request body should contain a JSON object and a JSON patch object. Applies the json patch to the json object, and return the resulting json object.
+
+**Post body should be like this**
+
+```javascript
+    {
+        "jsonObj" :{ "baz": "qux","foo": "bar"},
+        "jsonPatchObj":[{ "op": "replace", "path": "/baz", "value": "boo" }]
+    }
+```
