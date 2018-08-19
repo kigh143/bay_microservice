@@ -23,7 +23,7 @@ A simple stateless microservice in Nodejs, with three major functionalities;
 - 401 Unauthorized - authentication failed or user doesn't have permissions for requested operation.
 - 404 Not Found - resource was not found.
 
-# End-points
+# Endpoints
 
 ##### /login/username/password
 
